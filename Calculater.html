@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Wealth Calculator</title>
+<style>
+body { font-family: sans-serif; background: #f0f2f5; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
+.calc-box { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); width: 350px; }
+input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+button { width: 100%; padding: 15px; background: #003366; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.back { display: block; text-align: center; margin-top: 15px; text-decoration: none; color: #666; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="calc-box">
+<h2 style="color:#003366; text-align:center;">SIP Calculator</h2>
+<input type="number" id="amt" placeholder="Monthly Investment (₹)">
+<input type="number" id="rate" placeholder="Expected Return (%)">
+<input type="number" id="yrs" placeholder="Years">
+<button onclick="calc()">CALCULATE</button>
+<h3 id="res" style="text-align:center; color:#f4a91e;"></h3>
+<a href="index.html" class="back">← Back to Dashboard</a>
+</div>
+<script>
+function calc() {
+let p = document.getElementById('amt').value, r = document.getElementById('rate').value/12/100, n = document.getElementById('yrs').value*12;
+let total = p * (((Math.pow(1+r, n))-1)/r) * (1+r);
+document.getElementById('res').innerText = "Wealth: ₹" + Math.round(total).toLocaleString();
+}
+</script>
+</body>
+</html>
